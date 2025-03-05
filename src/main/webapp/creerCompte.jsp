@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="cv">CV (PDF uniquement):</label>
+                <label for="cv">CV :</label>
                 <input type="file" class="form-control-file" id="cv" name="cv" accept=".pdf" required>
             </div>
 
