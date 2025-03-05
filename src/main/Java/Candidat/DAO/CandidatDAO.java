@@ -1,7 +1,7 @@
 package Candidat.DAO;
 import java.sql.*;
 import java.sql.Connection;
-import static Candidat.DAO.DatabaseConnection.getConnection;
+import static Candidat.Utils.DatabaseConnection.getConnection;
 
 public class CandidatDAO {
 
@@ -124,6 +124,4 @@ public class CandidatDAO {
         return isDeleted;
     }
 }
-
-
 
