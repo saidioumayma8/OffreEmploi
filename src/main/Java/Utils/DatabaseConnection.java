@@ -1,4 +1,4 @@
-package Candidat.DAO;
+package Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     // URL de la base de données MySQL
-    private static final String URL = "jdbc:mysql://localhost:3306/OffreEmploi";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3305/OffreEmploi";
     private static final String USER = "root";
     private static final String PASSWORD = "admin";
 
@@ -16,12 +16,18 @@ public class DatabaseConnection {
         try {
             // Enregistrer le driver JDBC MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Retourner la connexion
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+
+            // Connexion à la base de données
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("✅ Database connection successful!"); // Message de confirmation
+
+            return connection;
         } catch (ClassNotFoundException e) {
-            // Si le driver n'est pas trouvé, lever une exception SQL
+            System.out.println("❌ MySQL Driver not found!");
             throw new SQLException("Database driver not found", e);
+        } catch (SQLException e) {
+            System.out.println("❌ Database connection failed: " + e.getMessage());
+            throw e;
         }
     }
 }
-
