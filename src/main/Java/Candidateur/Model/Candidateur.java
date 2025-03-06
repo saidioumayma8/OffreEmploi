@@ -1,9 +1,9 @@
-package Candidature.Model;
+package Candidateur.Model;
 
 import Candidat.Model.Candidat;
 import OffreEmploi.Model.OffreEmploi;
 
-public class Candidature {
+public class Candidateur {
     private int candidatureId;
     private CandidatureStatus status;
     private Candidat candidate;
@@ -14,9 +14,9 @@ public class Candidature {
     }
 
     // Constructeurs
-    public Candidature() {}
+    public Candidateur() {}
 
-    public Candidature(int candidatureId, CandidatureStatus status, Candidat candidate, OffreEmploi offreEmploi) {
+    public Candidateur(int candidatureId, CandidatureStatus status, Candidat candidate, OffreEmploi offreEmploi) {
         this.candidatureId = candidatureId;
         this.status = status;
         this.candidate = candidate;

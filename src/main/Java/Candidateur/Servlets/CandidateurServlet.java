@@ -1,10 +1,9 @@
 package Candidateur.Servlets;
 
-import Candidateur.DAO.CandidatureDAO;
-import Candidature.Model.Candidature;
 import Candidat.Model.Candidat;
+import Candidateur.DAO.CandidateurDAO;
 import OffreEmploi.Model.OffreEmploi;
-
+import Candidateur.Model.Candidateur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,18 +12,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.List;
 
 @WebServlet("/CandidatureServlet")
-public class CandidatureServlet extends HttpServlet {
+public class CandidateurServlet extends HttpServlet {
 
-    private CandidatureDAO candidatureDAO;
+    private CandidateurDAO candidatureDAO;
 
     @Override
     public void init() throws ServletException {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/OffreEmploi", "root", "password");
-            candidatureDAO = new CandidatureDAO(connection);
+            candidatureDAO = new CandidateurDAO(connection);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,9 +34,9 @@ public class CandidatureServlet extends HttpServlet {
 
         Candidat candidat = new Candidat(candidateId, null, null, null, null, null);
         OffreEmploi offreEmploi = new OffreEmploi(offreId, null, null, null);
-        Candidature candidature = new Candidature(0, Candidature.CandidatureStatus.EN_ATTENTE, candidat, offreEmploi);
+        Candidateur candidateur = new Candidateur(0, Candidateur.CandidatureStatus.EN_ATTENTE, candidat, offreEmploi);
 
-        if (candidatureDAO.addCandidature(candidature)) {
+        if (candidatureDAO.addCandidature(candidateur)) {
             response.sendRedirect("success.jsp");
         } else {
             response.sendRedirect("error.jsp");
