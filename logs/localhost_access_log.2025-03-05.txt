@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:00:51 +0100] "GET /OffreEmploi/ HTTP/1.1" 200 52
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:01:55 +0100] "GET /OffreEmploi/Condidat.jsp HTTP/1.1" 200 537
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:02:01 +0100] "GET /OffreEmploi/creerCompte.jsp HTTP/1.1" 200 950
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:02:21 +0100] "GET /OffreEmploi/modifierCompte.jsp HTTP/1.1" 200 1075
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:02:39 +0100] "GET /OffreEmploi/supprimerCompte.jsp HTTP/1.1" 200 571
+0:0:0:0:0:0:0:1 - - [05/Mar/2025:11:02:44 +0100] "POST /OffreEmploi/supprimerCompte HTTP/1.1" 404 712
