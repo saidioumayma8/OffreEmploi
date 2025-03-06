@@ -125,3 +125,7 @@ public class CandidatDAO {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 390e30d50698d749c31be0538f364e8534707b78
