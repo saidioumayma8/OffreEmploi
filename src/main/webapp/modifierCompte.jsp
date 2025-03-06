@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Modifier mon compte</h1>
 
-        <form action="modifierCompte" method="post" enctype="multipart/form-data">
+        <form action="CandidatServlet" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nouveauNom">Nom:</label>
                 <input type="text" class="form-control" id="nouveauNom" name="nouveauNom" value="John Doe" required>
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <label for="nouveauCv">Nouveau CV (PDF uniquement):</label>
-                <input type="file" class="form-control-file" id="nouveauCv" name="nouveauCv" accept=".pdf">
+                <input type="text" class="form-control" id="nouveauCv" name="nouveauCv" required>
             </div>
 
             <button type="submit" class="btn btn-warning btn-block">Mettre à jour</button>
