@@ -1,5 +1,8 @@
+<<<<<<<< HEAD:src/main/Java/Candidat/Utils/DatabaseConnection.java
 package Candidat.Utils;
-
+========
+package Utils;
+>>>>>>>> bdd57ef34d570b49a22bfa4043ca14a4e9259264:src/main/Java/Utils/DatabaseConnection.java
 
 import java.sql.Connection;
 import java.sql.DriverManager;

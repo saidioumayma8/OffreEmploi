@@ -1,6 +1,7 @@
 package Candidat.DAO;
 import java.sql.*;
 import java.sql.Connection;
+
 import static Candidat.Utils.DatabaseConnection.getConnection;
 
 public class CandidatDAO {
