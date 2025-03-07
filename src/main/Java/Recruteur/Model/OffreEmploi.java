@@ -3,10 +3,20 @@ package Recruteur.Model;
 import java.util.Date;
 
 public class OffreEmploi {
+    private int offreId;
     private String titre;
     private String description;
     private Date datePublication;
     private int recruiterId;
+
+
+    public int getOffreId() {
+        return offreId;
+    }
+
+    public void setOffreId(int offreId) {
+        this.offreId = offreId;
+    }
 
     public String getTitre() {
         return titre;
