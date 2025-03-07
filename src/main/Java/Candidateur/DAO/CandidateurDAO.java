@@ -1,7 +1,7 @@
 package Candidateur.DAO;
 
 import Candidat.Model.Candidat;
-import OffreEmploi.Model.OffreEmploi;
+import Recruteur.Model.OffreEmploi;
 import Candidateur.Model.Candidateur;
 import java.sql.*;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class CandidateurDAO {
         String query = "INSERT INTO candidature (status, candidate_id, offre_id) VALUES (?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, candidature.getStatus().toString());
-            ps.setInt(2, candidature.getCandidate().getUserId());
+            ps.setInt(2, candidature.getCandidate().getId());
             ps.setInt(3, candidature.getOffreEmploi().getOffreId());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {

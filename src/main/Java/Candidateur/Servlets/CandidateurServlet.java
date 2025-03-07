@@ -2,7 +2,7 @@ package Candidateur.Servlets;
 
 import Candidat.Model.Candidat;
 import Candidateur.DAO.CandidateurDAO;
-import OffreEmploi.Model.OffreEmploi;
+import Recruteur.Model.OffreEmploi;
 import Candidateur.Model.Candidateur;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -47,7 +47,7 @@ public class CandidateurServlet extends HttpServlet {
         int candidatureId = Integer.parseInt(request.getParameter("candidatureId"));
         String status = request.getParameter("status");
 
-        if (candidatureDAO.updateCandidatureStatus(candidatureId, Candidature.CandidatureStatus.valueOf(status))) {
+        if (candidatureDAO.updateCandidatureStatus(candidatureId, Candidateur.CandidatureStatus.valueOf(status))) {
             response.sendRedirect("success.jsp");
         } else {
             response.sendRedirect("error.jsp");

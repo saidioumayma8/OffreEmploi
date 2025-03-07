@@ -1,7 +1,7 @@
 package Candidateur.Model;
 
 import Candidat.Model.Candidat;
-import OffreEmploi.Model.OffreEmploi;
+import Recruteur.Model.OffreEmploi;
 
 public class Candidateur {
     private int candidatureId;

@@ -20,16 +20,16 @@ public class CreateOffreServlet extends HttpServlet {
         try {
             connection = DatabaseConnection.getConnection();
             if (connection != null) {
-                System.out.println("✅ Database connection established!");
+                System.out.println("Database connection established!");
                 Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT 1");
                 if (resultSet.next()) {
-                    System.out.println("✅ Connection is valid.");
+                    System.out.println("Connection is valid.");
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new ServletException("❌ Database connection failed", e);
+            throw new ServletException("Database connection failed", e);
         }
     }
 
@@ -45,7 +45,7 @@ public class CreateOffreServlet extends HttpServlet {
             int recruiterId = Integer.parseInt(request.getParameter("recruiter_id"));
 
             if (titre == null || description == null || dateStr == null) {
-                response.getWriter().write("❌ Error: Missing fields");
+                response.getWriter().write("Error: Missing fields");
                 return;
             }
 
@@ -62,13 +62,13 @@ public class CreateOffreServlet extends HttpServlet {
             boolean isCreated = dao.createOffre(offre);
 
             if (isCreated) {
-                response.getWriter().write("✅ Offer successfully created!");
+                response.getWriter().write("Offer successfully created!");
             } else {
-                response.getWriter().write("❌ Error: Could not create offer. Recruiter ID might not exist.");
+                response.getWriter().write("Error: Could not create offer. Recruiter ID might not exist.");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().write("❌ Error: " + e.getMessage());
+            response.getWriter().write("Error: " + e.getMessage());
         }
     }
 
