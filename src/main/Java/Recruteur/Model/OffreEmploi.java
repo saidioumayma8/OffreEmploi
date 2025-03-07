@@ -3,12 +3,18 @@ package Recruteur.Model;
 import java.util.Date;
 
 public class OffreEmploi {
-    private int OffreId;
+    private int offreId;
     private String titre;
     private String description;
     private Date datePublication;
     private int recruiterId;
-
+  
+    public int getOffreId() {
+        return offreId;
+    }
+    public void setOffreId(int offreId) {
+        this.offreId = offreId;
+      
     public OffreEmploi(String titre, int offreId, Date datePublication, String description, int recruiterId) {
         this.titre = titre;
         OffreId = offreId;
@@ -24,14 +30,6 @@ public class OffreEmploi {
 
     public int getOffreId() {
         return OffreId;
-    }
-
-    public void setOffreId(int offreId) {
-        OffreId = offreId;
-    }
-
-    public String getTitre() {
-        return titre;
     }
 
     public void setTitre(String titre) {
