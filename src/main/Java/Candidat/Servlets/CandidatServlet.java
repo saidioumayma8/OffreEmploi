@@ -41,7 +41,6 @@ public class CandidatServlet extends HttpServlet {
         String password = request.getParameter("password");
         String tel = request.getParameter("tel");
         String cv = request.getParameter("cv");
-        System.out.println("tester la connection");
         boolean isRegistered = candidatDAO.creerCompte(nom, email, password, tel, cv);
 
         if (isRegistered) {
@@ -63,7 +62,7 @@ public class CandidatServlet extends HttpServlet {
         boolean isUpdated = candidatDAO.modifierCompte(id, nom, email, password, tel, cv);
 
         if (isUpdated) {
-            response.sendRedirect("profileUpdated.jsp"); // Redirige vers la page de profil mis à jour
+            response.sendRedirect("success.jsp"); // Redirige vers la page de profil mis à jour
         } else {
             response.sendRedirect("error.jsp"); // Redirige vers une page d'erreur
         }
@@ -76,14 +75,14 @@ public class CandidatServlet extends HttpServlet {
         boolean isDeleted = candidatDAO.deleteAccount(id);
 
         if (isDeleted) {
-            response.sendRedirect("accountDeleted.jsp"); // Redirige vers une page de compte supprimé
+            response.sendRedirect("success.jsp"); // Redirige vers une page de compte supprimé
         } else {
             response.sendRedirect("error.jsp"); // Redirige vers une page d'erreur
         }
     }
 
-    // La méthode doGet peut être utilisée pour afficher les informations du profil, si nécessaire
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Logic for viewing the candidate profile can go here
+
     }
 }

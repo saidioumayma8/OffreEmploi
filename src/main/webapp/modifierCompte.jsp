@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group">
-                <label for="nouveauCv">Nouveau CV (PDF uniquement):</label>
+                <label for="nouveauCv">Nouveau CV :</label>
                 <input type="text" class="form-control" id="nouveauCv" name="nouveauCv" required>
             </div>
 
