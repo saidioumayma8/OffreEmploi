@@ -8,18 +8,28 @@ public class OffreEmploi {
     private String description;
     private Date datePublication;
     private int recruiterId;
-
-
+  
     public int getOffreId() {
         return offreId;
     }
-
     public void setOffreId(int offreId) {
         this.offreId = offreId;
+      
+    public OffreEmploi(String titre, int offreId, Date datePublication, String description, int recruiterId) {
+        this.titre = titre;
+        OffreId = offreId;
+        this.datePublication = datePublication;
+        this.description = description;
+        this.recruiterId = recruiterId;
     }
 
-    public String getTitre() {
-        return titre;
+    public OffreEmploi(int offreId, Object o, Object datePublication, Object description) {
+    }
+    public OffreEmploi() {
+    }
+
+    public int getOffreId() {
+        return OffreId;
     }
 
     public void setTitre(String titre) {
