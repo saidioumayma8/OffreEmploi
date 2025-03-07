@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Créer un compte</h1>
 
-        <form action="creerCompte" method="post" enctype="multipart/form-data">
+        <form action="CandidateServlet" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nom">Nom:</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="cv">CV :</label>
-                <input type="file" class="form-control-file" id="cv" name="cv" accept=".pdf" required>
+                <input type="text" class="form-control" id="cv" name="cv" required>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
