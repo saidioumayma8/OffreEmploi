@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Supprimer mon compte</h1>
 
-        <form action="supprimerCompte" method="post">
+        <form action="CandidatServlet" method="post">
             <div class="alert alert-warning text-center">
                 <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
             </div>

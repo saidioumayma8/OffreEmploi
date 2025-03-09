@@ -1,7 +1,8 @@
 package Candidat.DAO;
 import java.sql.*;
 import java.sql.Connection;
-import static Utils.DatabaseConnection.getConnection;
+
+import static Candidat.Utils.DatabaseConnection.getConnection;
 
 public class CandidatDAO {
 
@@ -31,9 +32,9 @@ public class CandidatDAO {
                 if (generatedKeys.next()) {
                     int id = generatedKeys.getInt(1);
 
-                    // Insertion dans la table 'patient'
-                    String patientQuery = "INSERT INTO patient (user_id, nom, email, password, tel, cv) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                    psCondidat = conn.prepareStatement(patientQuery);
+                    // Insertion dans la table 'candidates'
+                    String candidatesQuery = "INSERT INTO candidates (user_id, nom, email, password, tel, cv) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    psCondidat = conn.prepareStatement(candidatesQuery);
                     psCondidat.setInt(1, id);
                     psCondidat.setString(2, nom);
                     psCondidat.setString(3, email);
@@ -41,7 +42,7 @@ public class CandidatDAO {
                     psCondidat.setString(5, tel);
                     psCondidat.setString(6, cv);
 
-                    // Exécution de la requête d'insertion dans la table 'patient'
+                    // Exécution de la requête d'insertion dans la table 'candidates'
                     psCondidat.executeUpdate();
 
                     // Si l'insertion a réussi, on marque l'inscription comme réussie
@@ -124,5 +125,3 @@ public class CandidatDAO {
         return isDeleted;
     }
 }
-
-
