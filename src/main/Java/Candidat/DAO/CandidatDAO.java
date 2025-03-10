@@ -1,8 +1,12 @@
 package Candidat.DAO;
 import Candidat.Model.Candidat;
+import Candidat.Utils.DatabaseConnection;
+import Candidat.Model.Candidat;
 
 import java.sql.*;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import static Candidat.Utils.DatabaseConnection.getConnection;
 
@@ -127,4 +131,28 @@ public class CandidatDAO {
         return isDeleted;
     }
 
-}
+
+        public List<Candidat> getAllCandidates() {
+            List<Candidat> candidates = new ArrayList<>();
+            String sql = "SELECT c.candidate_id, u.nom, u.email, c.tel, c.cv FROM candidates c JOIN users u ON c.candidate_id = u.user_id";
+
+            try (Connection conn = DatabaseConnection.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql);
+                 ResultSet rs = stmt.executeQuery()) {
+
+                while (rs.next()) {
+                    Candidat candidate = new Candidat();
+                    candidate.setId(rs.getInt("candidate_id"));
+                    candidate.setNom(rs.getString("nom"));
+                    candidate.setEmail(rs.getString("email"));
+                    candidate.setTel(rs.getString("tel"));
+                    candidate.setCv(rs.getString("cv"));
+                    candidates.add(candidate);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return candidates;
+        }
+    }
+

@@ -3,6 +3,8 @@
 <%@ page import="Candidateur.DAO.CandidateurDAO" %>
 <%@ page import="java.sql.Connection, java.sql.DriverManager" %>
 <%@ page import="java.sql.SQLException" %>
+<%@ page import="Recruteur.DAO.OffreEmploiDAO" %>
+<%@ page import="Utils.DatabaseConnection" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
@@ -27,11 +29,12 @@
     <%
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/OffreEmploi", "root", "password");
+            conn = DatabaseConnection.getConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        CandidateurDAO dao = new CandidateurDAO(conn);
+
+        OffreEmploiDAO dao = new OffreEmploiDAO(conn);
         List<OffreEmploi> offres = dao.getAllOffres();
 
         for (OffreEmploi offre : offres) {
@@ -44,6 +47,7 @@
     <% } %>
 
     <br><a href="listeCandidatures.jsp">Voir les candidatures</a>
+    <br><a href="../index.jsp">Go to Home !</a>
 </div>
 
 </body>

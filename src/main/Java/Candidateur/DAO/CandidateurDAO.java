@@ -37,11 +37,11 @@ public class CandidateurDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return new Candidateur(
-                        rs.getInt("candidature_id"),
-                        Candidateur.CandidatureStatus.valueOf(rs.getString("status")),
+                                        rs.getInt("candidature_id"),
                         new Candidat(rs.getInt("candidate_id"), null, null, null, null, null),
-                        new OffreEmploi(rs.getInt("offre_id"), null, null, null)
-                );
+                        new OffreEmploi(rs.getInt("offre_id"), null, null, null),
+                        Candidateur.CandidatureStatus.valueOf(rs.getString("status"))
+                                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,16 +77,30 @@ public class CandidateurDAO {
     // Lister toutes les candidatures
     public List<Candidateur> getAllCandidatures() {
         List<Candidateur> candidatures = new ArrayList<>();
-        String query = "SELECT * FROM candidature";
-        try (PreparedStatement ps = connection.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+        String sql = "SELECT c.candidature_id, u.nom, o.titre, c.status FROM candidature c "
+                + "JOIN candidates ca ON c.candidate_id = ca.candidate_id "
+                + "JOIN users u ON ca.candidate_id = u.user_id "
+                + "JOIN offre_emploi o ON c.offre_id = o.offre_id";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
             while (rs.next()) {
-                candidatures.add(new Candidateur(
-                        rs.getInt("candidature_id"),
-                        Candidateur.CandidatureStatus.valueOf(rs.getString("status")),
-                        new Candidat(rs.getInt("candidate_id"), null, null, null, null, null),
-                        new OffreEmploi(rs.getInt("offre_id"), null, null, null)
-                ));
+                Candidateur c = new Candidateur();
+                c.setCandidatureId(rs.getInt("candidature_id"));
+
+                Candidat candidate = new Candidat();
+                candidate.setNom(rs.getString("nom"));
+                c.setCandidate(candidate);
+
+                OffreEmploi offre = new OffreEmploi();
+                offre.setTitre(rs.getString("titre"));
+                c.setOffreEmploi(offre);
+
+                String status = rs.getString("status");
+                c.setStatus(status);
+
+                candidatures.add(c);
             }
         } catch (SQLException e) {
             e.printStackTrace();

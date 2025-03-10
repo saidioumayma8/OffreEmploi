@@ -1,8 +1,8 @@
 package Candidat.Servlets;
 import Candidat.DAO.CandidatDAO;
 import jakarta.servlet.annotation.WebServlet;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/CandidateServlet")

@@ -62,6 +62,8 @@
                 <li class="nav-item"><a href="User/Login.jsp" class="nav-link">Login</a></li>
                 <li class="nav-item"><a href="OffreEmploi/create-offre.jsp" class="nav-link">Crete Offre</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+                <li class="nav-item cta cta-colored"><a href="Candidateur/HomeCand.jsp" class="nav-link"><span class="icon-shopping_cart"></span>Candidateurs</a></li>
+
             </ul>
         </div>
     </div>

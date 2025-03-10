@@ -1,6 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="Candidat.Model.Candidat, Recruteur.Model.OffreEmploi, Candidateur.DAO.CandidateurDAO" %>
-<%@ page import="java.sql.Connection, java.sql.DriverManager" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="Candidat.DAO.CandidatDAO" %>
+<%@ page import="Recruteur.DAO.OffreEmploiDAO" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
@@ -15,10 +17,14 @@
 <h2>Postuler à une Offre</h2>
 
 <%
-    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/OffreEmploi", "root", "admin");
-    CandidateurDAO dao = new CandidateurDAO(conn);
+    CandidatDAO dao = new CandidatDAO();
     List<Candidat> candidats = dao.getAllCandidates();
-    List<OffreEmploi> offres = dao.getAllOffres();
+    List<OffreEmploi> offres = null;
+    try {
+        offres = OffreEmploiDAO.getAllOffres();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
 %>
 
 <form action="CandidatureServlet" method="post">
@@ -26,7 +32,7 @@
     <select name="candidateId" required>
         <option value="">-- Sélectionner --</option>
         <% for (Candidat c : candidats) { %>
-        <option value="<%= c.getId() %>"><%= c.getNom() %> <%= c.getPrenom() %></option>
+        <option value="<%= c.getId() %>"><%= c.getNom() %></option>
         <% } %>
     </select>
 

@@ -1,38 +1,67 @@
 package Candidateur.Model;
 
-import Candidat.Model.Candidat;
 import Recruteur.Model.OffreEmploi;
+import Candidat.Model.Candidat;
 
 public class Candidateur {
-    private int candidatureId;
-    private CandidatureStatus status;
-    private Candidat candidate;
-    private OffreEmploi offreEmploi;
 
-    public enum CandidatureStatus {
-        EN_ATTENTE, ACCEPTEE, REFUSEE
+    public Candidateur() {
+
     }
 
-    // Constructeurs
-    public Candidateur() {}
+    public enum CandidatureStatus {
+        EN_ATTENTE, // Modifie ici si besoin
+        ACCEPTEE,
+        REFUSEE
+    }
 
-    public Candidateur(int candidatureId, CandidatureStatus status, Candidat candidate, OffreEmploi offreEmploi) {
+    public Candidateur(int candidatureId, Candidat candidate, OffreEmploi offreEmploi, CandidatureStatus status) {
         this.candidatureId = candidatureId;
-        this.status = status;
         this.candidate = candidate;
+        this.offreEmploi = offreEmploi;
+        this.status = status;
+    }
+
+    private int candidatureId;
+    private Candidat candidate;
+    private OffreEmploi offreEmploi;
+    private CandidatureStatus status;
+
+    // Getters et setters
+    public int getCandidatureId() {
+        return candidatureId;
+    }
+
+    public void setCandidatureId(int candidatureId) {
+        this.candidatureId = candidatureId;
+    }
+
+    public Candidat getCandidate() {
+        return candidate;
+    }
+
+    public void setCandidate(Candidat candidate) {
+        this.candidate = candidate;
+    }
+
+    public OffreEmploi getOffreEmploi() {
+        return offreEmploi;
+    }
+
+    public void setOffreEmploi(OffreEmploi offreEmploi) {
         this.offreEmploi = offreEmploi;
     }
 
-    // Getters et Setters
-    public int getCandidatureId() { return candidatureId; }
-    public void setCandidatureId(int candidatureId) { this.candidatureId = candidatureId; }
+    public CandidatureStatus getStatus() {
+        return status;
+    }
 
-    public CandidatureStatus getStatus() { return status; }
-    public void setStatus(CandidatureStatus status) { this.status = status; }
-
-    public Candidat getCandidate() { return candidate; }
-    public void setCandidate(Candidat candidate) { this.candidate = candidate; }
-
-    public OffreEmploi getOffreEmploi() { return offreEmploi; }
-    public void setOffreEmploi(OffreEmploi offreEmploi) { this.offreEmploi = offreEmploi; }
+    public void setStatus(String status) {
+        try {
+            this.status = CandidatureStatus.valueOf(status.toUpperCase().replace(" ", "_"));
+        } catch (IllegalArgumentException e) {
+            System.err.println("Valeur inconnue pour CandidatureStatus : " + status);
+            this.status = CandidatureStatus.EN_ATTENTE; // Valeur par défaut
+        }
+    }
 }
