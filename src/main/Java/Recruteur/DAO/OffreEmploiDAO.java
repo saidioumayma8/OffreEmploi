@@ -2,6 +2,8 @@ package Recruteur.DAO;
 
 import Recruteur.Model.OffreEmploi;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OffreEmploiDAO {
     private Connection connection;
@@ -11,7 +13,6 @@ public class OffreEmploiDAO {
     }
 
     public boolean createOffre(OffreEmploi offre) {
-        // Check if recruiter_id exists before inserting
         if (!isRecruiterExists(offre.getRecruiterId())) {
             System.err.println("Recruiter ID does not exist: " + offre.getRecruiterId());
             return false; // Prevent insertion
@@ -42,5 +43,26 @@ public class OffreEmploiDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<OffreEmploi> getAllOffres() {
+        List<OffreEmploi> offres = new ArrayList<>();
+        String query = "SELECT * FROM offreEmploi"; // Adjust based on your DB structure
+
+        try (PreparedStatement ps = connection.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                OffreEmploi offre = new OffreEmploi();
+                offre.setOffreId(rs.getInt("id"));
+                offre.setTitre(rs.getString("titre"));
+                offre.setDescription(rs.getString("description"));
+                offre.setDatePublication(rs.getDate("date_publication"));
+                offres.add(offre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return offres;
     }
 }
