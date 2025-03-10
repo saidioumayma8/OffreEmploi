@@ -1,17 +1,20 @@
 package Recruteur.DAO;
 
 import Recruteur.Model.OffreEmploi;
+import Utils.DatabaseConnection;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OffreEmploiDAO {
-    private Connection connection;
+    private static Connection connection;
 
     public OffreEmploiDAO(Connection connection) {
         this.connection = connection;
     }
 
     public boolean createOffre(OffreEmploi offre) {
-        // Check if recruiter_id exists before inserting
         if (!isRecruiterExists(offre.getRecruiterId())) {
             System.err.println("Recruiter ID does not exist: " + offre.getRecruiterId());
             return false; // Prevent insertion
@@ -43,4 +46,46 @@ public class OffreEmploiDAO {
             return false;
         }
     }
+
+    public static List<OffreEmploi> getAllOffres() throws SQLException {
+        List<OffreEmploi> offres = new ArrayList<>();
+        connection= DatabaseConnection.getConnection();
+
+        if (connection == null) {
+            System.err.println("❌ ERROR: Database connection is NULL in DAO!");
+            return offres;
+        }
+
+        String query = "SELECT * FROM offre_emploi";
+        System.out.println("🔍 DEBUG: Executing SQL - " + query);
+
+        try (PreparedStatement ps = connection.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("offre_id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date datePublication = rs.getDate("date_publication");
+
+                System.out.println("✅ Found: ID=" + id + ", Titre=" + titre);
+
+                OffreEmploi offre = new OffreEmploi();
+                offre.setOffreId(id);
+                offre.setTitre(titre);
+                offre.setDescription(description);
+                offre.setDatePublication(datePublication);
+                offres.add(offre);
+            }
+
+            System.out.println("✅ Total offres retrieved: " + offres.size()); // Debugging line
+
+        } catch (SQLException e) {
+            System.err.println("❌ SQL ERROR: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return offres;
+    }
+
 }

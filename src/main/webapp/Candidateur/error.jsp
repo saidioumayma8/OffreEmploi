@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,3 +10,4 @@
 <a href="HomeCand.jsp">Retour à l'accueil</a>
 </body>
 </html>
+
