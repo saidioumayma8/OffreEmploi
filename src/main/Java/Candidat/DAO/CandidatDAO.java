@@ -1,4 +1,6 @@
 package Candidat.DAO;
+import Candidat.Model.Candidat;
+
 import java.sql.*;
 import java.sql.Connection;
 
@@ -124,4 +126,5 @@ public class CandidatDAO {
         }
         return isDeleted;
     }
+
 }

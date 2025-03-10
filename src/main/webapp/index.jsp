@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>TalentFlow: Application de recrutement</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -36,14 +36,14 @@
                 <div class="row d-flex">
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                        <span class="text">+ 1235 2355 98</span>
+                        <span class="text">+ 21 265 235 598</span>
                     </div>
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                        <span class="text">youremail@email.com</span>
+                        <span class="text">TalentFlow@email.com</span>
                     </div>
                     <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-                        <span class="text">3-5 Business days delivery &amp; Free Returns</span>
+                        <span class="text">Application de recrutement</span>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.jsp">Vegefoods</a>
+        <a class="navbar-brand" href="index.jsp">TalentFlow</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -60,19 +60,8 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.jsp" class="nav-link">Home</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.jsp">Shop</a>
-                        <a class="dropdown-item" href="wishlist.jsp">Wishlist</a>
-                        <a class="dropdown-item" href="product-single.jsp">Single Product</a>
-                        <a class="dropdown-item" href="cart.jsp">Cart</a>
-                        <a class="dropdown-item" href="checkout.jsp">Checkout</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="about.jsp" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="blog.jsp" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="OffreEmploi/AfficheOffreEmploi.jsp" class="nav-link">les OffreEmploi</a></li>
+                <li class="nav-item"><a href="User/Login.jsp" class="nav-link">Login</a></li>
                 <li class="nav-item"><a href="OffreEmploi/create-offre.jsp" class="nav-link">Crete Offre</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
             </ul>
@@ -81,7 +70,7 @@
 </nav>
 <section id="home-section" class="hero">
     <div class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
+        <div class="slider-item" style="background-image: url(./images/bg_1.jpg.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -94,7 +83,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
+        <div class="slider-item" style="background-image: url(./images/bg_1.jpg.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -111,8 +100,6 @@
 
 <footer class="ftco-footer ftco-section">
 </footer>
-
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
