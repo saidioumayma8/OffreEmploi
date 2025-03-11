@@ -46,6 +46,16 @@
             <version>6.1.0</version>
             <scope>provided</scope>
         </dependency>
+
+            <!-- Servlet API for Java EE -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version> <!-- Remplacez par la version que vous utilisez -->
+                <scope>provided</scope> <!-- Le scope "provided" signifie que le serveur d'application (ex : Tomcat) fournira cette dépendance -->
+            </dependency>
+
+
     </dependencies>
 
     <build>

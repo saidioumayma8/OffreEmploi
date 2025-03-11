@@ -11,7 +11,9 @@
     <div class="container mt-5">
         <h1 class="text-center">Supprimer mon compte</h1>
 
-        <form action="CandidatServlet" method="post">
+        <form action="CandidateServlet" method="post">
+            <input type="hidden" name="action" value="delete" /> <!-- Indicating the action for the servlet -->
+
             <div class="alert alert-warning text-center">
                 <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
             </div>
@@ -21,6 +23,5 @@
 
         <p class="text-center mt-3"><a href="Condidat.jsp">Retour à la page principale</a></p>
     </div>
-
 </body>
 </html>

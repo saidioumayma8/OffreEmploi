@@ -1,19 +1,19 @@
 package Candidat.Servlets;
+
 import Candidat.DAO.CandidatDAO;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/CandidateServlet")
 public class CandidatServlet extends HttpServlet {
     private CandidatDAO candidatDAO = new CandidatDAO();
 
-    // DoPost pour gérer les actions de création, modification et suppression de compte
+    // DoPost to handle create, update, delete actions
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Récupération de l'action (create, update, delete) depuis la requête
         String action = request.getParameter("action");
 
         if (action != null) {
@@ -22,69 +22,65 @@ public class CandidatServlet extends HttpServlet {
                     creerCompte(request, response);
                     break;
                 case "update":
-                    modifierCompte(request, response);
+                    updateCompte(request, response);
                     break;
                 case "delete":
                     supprimerCompte(request, response);
                     break;
                 default:
-                    response.sendRedirect("error.jsp"); // Si l'action est inconnue
+                    response.sendRedirect("error.jsp");
                     break;
             }
         } else {
-            response.sendRedirect("error.jsp"); // Si aucune action n'est spécifiée
+            response.sendRedirect("error.jsp");
         }
     }
 
-    // Méthode pour créer un compte candidat
+    // Create a new candidate account
     private void creerCompte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nom = request.getParameter("nom");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String tel = request.getParameter("tel");
         String cv = request.getParameter("cv");
-        boolean isRegistered = candidatDAO.creerCompte(nom, email, password, tel, cv);
+        String userType = request.getParameter("userType");  // Added userType to differentiate candidate/recruiter
+
+        boolean isRegistered = candidatDAO.creerCompte(nom, email, password, tel, cv, userType);
 
         if (isRegistered) {
-            response.sendRedirect("success.jsp"); // Redirige vers une page de succès
+            response.sendRedirect("OffreEmploi/AfficheOffreEmploi.jsp");
         } else {
-            response.sendRedirect("error.jsp"); // Redirige vers une page d'erreur
+            response.sendRedirect("error.jsp");
         }
     }
 
-    // Méthode pour modifier un compte candidat
-    private void modifierCompte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // Update candidate details
+    private void updateCompte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("userId"));
         String nom = request.getParameter("nom");
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
         String tel = request.getParameter("tel");
         String cv = request.getParameter("cv");
 
-        boolean isUpdated = candidatDAO.modifierCompte(id, nom, email, password, tel, cv);
+        boolean isUpdated = candidatDAO.updateCandidate(id, nom, email, tel, cv);
 
         if (isUpdated) {
-            response.sendRedirect("success.jsp"); // Redirige vers la page de profil mis à jour
+            response.sendRedirect("success.jsp");
         } else {
-            response.sendRedirect("error.jsp"); // Redirige vers une page d'erreur
+            response.sendRedirect("error.jsp");
         }
     }
 
-    // Méthode pour supprimer un compte candidat
+    // Delete a candidate account
     private void supprimerCompte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("userId"));
 
         boolean isDeleted = candidatDAO.deleteAccount(id);
 
         if (isDeleted) {
-            response.sendRedirect("success.jsp"); // Redirige vers une page de compte supprimé
+            response.sendRedirect("success.jsp");
         } else {
-            response.sendRedirect("error.jsp"); // Redirige vers une page d'erreur
+            response.sendRedirect("error.jsp");
         }
-    }
-
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

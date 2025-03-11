@@ -11,10 +11,9 @@
     <div class="container mt-5">
         <div class="text-center mt-4">
             <a href="creerCompte.jsp" class="btn btn-primary">Créer un compte</a><br><br>
-            <a href="modifierCompte.jsp" class="btn btn-primary">Modifier mon compte</a><br><br>
+            <a href="modifierCompte.jsp" class="btn btn-warning">Modifier mon compte</a><br><br>
             <a href="supprimerCompte.jsp" class="btn btn-danger">Supprimer mon compte</a><br><br>
         </div>
     </div>
-
 </body>
 </html>
