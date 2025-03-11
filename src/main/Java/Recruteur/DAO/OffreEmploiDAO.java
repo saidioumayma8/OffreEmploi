@@ -52,7 +52,7 @@ public class OffreEmploiDAO {
         connection= DatabaseConnection.getConnection();
 
         if (connection == null) {
-            System.err.println("❌ ERROR: Database connection is NULL in DAO!");
+            System.err.println("ERROR: Database connection is NULL in DAO!");
             return offres;
         }
 
@@ -68,7 +68,7 @@ public class OffreEmploiDAO {
                 String description = rs.getString("description");
                 Date datePublication = rs.getDate("date_publication");
 
-                System.out.println("✅ Found: ID=" + id + ", Titre=" + titre);
+                System.out.println("Found: ID=" + id + ", Titre=" + titre);
 
                 OffreEmploi offre = new OffreEmploi();
                 offre.setOffreId(id);
@@ -78,10 +78,10 @@ public class OffreEmploiDAO {
                 offres.add(offre);
             }
 
-            System.out.println("✅ Total offres retrieved: " + offres.size()); // Debugging line
+            System.out.println("Total offres retrieved: " + offres.size()); // Debugging line
 
         } catch (SQLException e) {
-            System.err.println("❌ SQL ERROR: " + e.getMessage());
+            System.err.println("SQL ERROR: " + e.getMessage());
             e.printStackTrace();
         }
 
