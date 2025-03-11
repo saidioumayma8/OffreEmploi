@@ -1,6 +1,6 @@
 package Candidat.Model;
 
-public class Candidat {
+public class Candidat{
     private int id;
     private String nom;
     private String email;
